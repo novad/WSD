@@ -13,19 +13,27 @@ In these two sentences, verb **play** has different senses. First one refers to 
 As Jurafsy and Martin [1] put it, the intuition behind this task is that similar meanings occur in similar contexts, either in terms of corpora (the neighboring words, syntactic structures), or in terms of dictionaries and thesauruses (that is similar definitions, or close in a thesaurus hierarchy).
 
 WSD tasks can be distinguished into two variants:
-1. **Lexical tasks**: Given a set of labeled target words, and a set of sentences examples associated with each target word, we can train a classifier using these labeled examples.
-2. **All-words tasks**: Given a set of texts and a lexicon with an inventory of senses for each entry, disambiguate all content words in the text.
+1. **Lexical tasks**: Given a set of labeled target words, and a set of sentences examples associated with each target word, we can train a classifier using these labeled examples. We use supervised learning.
+2. **All-words tasks**: Given a set of texts and a lexicon with an inventory of senses for each entry, disambiguate all content words in the text. We need to use semi-supervised or unseupervised learning approaches.
 
 # Organization of the repo
 The repo is divided into folders according to the used approach.
 Implementation is done using Python (actually Jupyter notebooks) and the Natural Language Toolkit ([NLTK](http://www.nltk.org/)).
 
 ## Supervised Approach. Naïve Bayes Classifier
+In the `SupervisedWSD` folder we will find file `NaiveBayes.ipynb` file with the code for this approach. This is a **lexical** task.
+
 The first approach uses Naïve Bayes classification. From a Machine Learning perspective WSD involves a classification task, that is classify a word as belonging to a class representing its sense.
 When a labeled corpus is available containing the correct word senses, we perform WSD using a supervised ML approach, that is extracting useful features, and training a classifier
 
 We use the Senseval 2 corpus formatted by Ted Pedersen (available at: <http://www.d.umn.edu/~tpederse/data.html>)
 This corpus also provides some instances with POS tags. (If you're not familiar with POS tagging take a look at [chapter 5 from the NLTK book ] (http://www.nltk.org/book/ch05.html))
+If you haven't downloaded the NLTK corpus, you can do it by running:
+```python
+import nltk
+nltk.download()
+```
+For information about check <http://www.nltk.org/data.html>.
 We'll see how accuracy changes when using POS-tagged and a non POS-tagged data.
 
 
